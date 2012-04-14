@@ -46,7 +46,7 @@ Puzzlet Chung
 
 ## 링크
 
-* [표준](/specification.ko.html) - 아희의 표준을 적어 놓은 문서입니다.
-* [코드](/code.ko.html) - 아희로 적은 코드입니다.
-* [구현](/implementations.ko.html) - 아희 코드를 실행시켜 볼 수 있습니다.
+* [표준](/specification.ko/) - 아희의 표준을 적어 놓은 문서입니다.
+* [코드](/code.ko/) - 아희로 적은 코드입니다.
+* [구현](/implementations.ko/) - 아희 코드를 실행시켜 볼 수 있습니다.
 
