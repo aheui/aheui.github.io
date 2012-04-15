@@ -53,7 +53,7 @@
 
 단, ㅂ의 경우 나머지 받침이 있으면 그 받침을 구성하는 선의 수에 따른 값을 집어넣습니다. 받침이 없으면 0을 집어넣습니다.
 
-<table class="datatable">
+<table>
   <tr>
   <td>ㄱ</td> <td>ㄴ</td> <td>ㄷ</td> <td>ㄹ</td> <td>ㅁ</td> <td>ㅂ</td> <td>ㅅ</td> <td>ㅈ</td> <td>ㅊ</td> <td>ㅋ</td> <td>ㅌ</td> <td>ㅍ</td> <td>&nbsp;</td>
   </tr>
