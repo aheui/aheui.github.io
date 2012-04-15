@@ -109,7 +109,7 @@ In Korean language, following "consonant clusters" are also valid as placed in t
   <tr>
   <td>4</td> <td>4</td> <td>5</td> <td>5</td> <td>7</td> <td>9</td> <td>9</td> <td>7</td> <td>9</td> <td>9</td> <td>8</td> <td>6</td> <td>4</td>
   </tr>
-</tbody>
+</table>
 
 ㅂ command with no final consonant pushes zero. There is no way to push 1 explicitly, but it is possible by simple arithmatic, such as `반반나`(2/2), `밤받타`(4-3).
 
