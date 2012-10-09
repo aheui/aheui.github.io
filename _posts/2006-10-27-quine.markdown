@@ -1,3 +1,8 @@
+---
+layout: default
+title: 콰인
+---
+
 Puzzlet Chung
 
 > 자기 자신을 출력하는 콰인입니다.

@@ -1,3 +1,8 @@
+---
+layout: default
+title: 안녕하세요
+---
+
 Puzzlet Chung
 
 > "안녕하세요?\n"를 출력합니다.

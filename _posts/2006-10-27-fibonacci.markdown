@@ -1,3 +1,7 @@
+---
+layout: default
+title: 피보나치(Fibonacci)
+---
 
 ## 토끼군
 

@@ -1,3 +1,7 @@
+---
+layout: default
+title: 아희 소개
+---
 
 # 아희
 

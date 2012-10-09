@@ -1,3 +1,8 @@
+---
+layout: default
+title: 아희 스펙
+---
+
 **아희**는 한글로 된 [난해한 프로그래밍 언어](http://ko.wikipedia.org/wiki/%EB%82%9C%ED%95%B4%ED%95%9C_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4)입니다.
  
 주의! 아래의 스펙은 미완성이며 뒷날에 바뀔 수 있습니다.
