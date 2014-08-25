@@ -6,6 +6,8 @@ title: Aheui
 Why should ASCII have all the fun? :)
 
 Puzzlet Chung
+
+last modified: 2014-08-25
  
 Aheui(아희) is the first esoteric programming language ever to be designed for the [Hangul](http://en.wikipedia.org/wiki/Hangul) (Hangeul) . The aim of the language is to reflect the graphical design of Hangul.
  
@@ -48,6 +50,8 @@ In Aheui, functions of consonants and vowels are different each other.
 WARNING: This spec is incomplete and subject to change.
  
 Typical code of Aheui is a two-dimensional space of Hangul characters, where each character is a command. In there cursor is moving around to execute the character which is under the cursor, similar to the intruction pointer of Funge-98.
+
+One difference of Aheui with Funge is the intial direction of the cursor. An Aheui cursor initially moves downward, unlike in Funge it moves to the right. It has the advantage for the code to be prefixed with a `#!` line, as `#` has no function in the language.
  
 As mentioned above, consonants and vowels have different fuctions. While the consonant is the actual instruction, the vowel is to determine the cursor's next position. Precisely, when the cursor meets a character, it is engaged to the following process:
 
@@ -60,8 +64,8 @@ There is more than one storage in Aheui. Most of them stacks, and one queue. Als
 
 Little branch(es) attached to the bar indicates the direction of the cursor.
 
-* ㅏ, ㅓ, ㅗ, and ㅜ moves cursor by one character right, left, top, bottom respectively.
-* ㅑ, ㅕ, ㅛ, and ㅠ moves cursor by two characters right, left, top, bottom respectively.
+* ㅏ, ㅓ, ㅗ, and ㅜ moves cursor by one character right, left, up, and down, respectively.
+* ㅑ, ㅕ, ㅛ, and ㅠ moves cursor by two characters right, left, up, and down, respectively.
 * ㅡ, ㅣ, and  ㅢ are the "reflectors". The cursor moves back to where it had come from. While ㅢ reflects all movement of the cursor, ㅡ reflects only vertical movement of the cursor, as ㅣ does horizontal movement only. The movement which is not reflected moves in the direction it went, by the law of inertia.
  
 ### Consonants: the Commands
