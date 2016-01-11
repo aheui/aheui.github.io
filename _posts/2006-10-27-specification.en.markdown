@@ -1,7 +1,7 @@
-----
+---
 layout: default
 title: Aheui
-----
+---
 
 Why should ASCII have all the fun? :)
 
