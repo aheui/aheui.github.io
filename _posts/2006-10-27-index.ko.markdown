@@ -11,10 +11,7 @@ title: 아희
 
 * [소개](/introduction.ko)
 * [표준](/specification.ko)
-* [코드](/code.ko)
-* [구현](/implementation.ko)
-* [말](/what-they-say.ko)
-* [시조](/poetry.ko)
-* [질문답변](/qna.ko)
+* [코드](https://github.com/aheui/snippets)
+* [구현](https://github.com/aheui/)
 
 * [국제아희개발자대회](/aheuicon)
