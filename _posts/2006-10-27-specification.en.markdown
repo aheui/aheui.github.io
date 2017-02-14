@@ -7,29 +7,43 @@ Why should ASCII have all the fun? :)
 
 Puzzlet Chung
 
-last modified: 2016-01-31
+last modified: 2017-02-14
 
-Aheui(아희) is the first esoteric programming language ever to be designed for the [Hangul](http://en.wikipedia.org/wiki/Hangul) (Hangeul) . The aim of the language is to reflect the graphical design of Hangul.
+Aheui (아희) is the first esoteric programming language ever to be designed for the Korean writing system, [Hangul](http://en.wikipedia.org/wiki/Hangul) (Hangeul) . The aim of the language is to reflect the graphical design of Hangul.
 
 ## "Aheul"
 
-"아희"("aheui") is an archaic term for "child" or "youngster", mainly found as an idiom "아희야"("aheui-ya", coincidently mathches with "[Oh, boy!](http://en.wiktionary.org/wiki/oh_boy_") in 15th-to-18th-century Korean poetry called *[sijo](http://en.wikipedia.org/wiki/Sijo)*. IPA notation for pronunciation of "aheui" is /ɑ.hɨj/(X-SAMPA `/A.h1j/`), or /ɑ.hɰi/(`/A.hM\i/`). However, since English language has no exact equivalent sounds of /ɨ/ and /ɰ/, it is acceptable to call it "AH-hi"/ɑ.hi/.
+"아희" ("Aheui") is an archaic term for "child" or "youngster", mainly found as an idiom "아희야"("aheui-ya", coincidently mathches with "[Oh, boy!](http://en.wiktionary.org/wiki/oh_boy_") in 15th-to-18th-century Korean poetry called *[sijo](http://en.wikipedia.org/wiki/Sijo)*. IPA notation for pronunciation of "aheui" is /ɑ.hɨj/(X-SAMPA `/A.h1j/`), or /ɑ.hɰi/(`/A.hM\i/`). However, since the English language has no sounds equivalent to /ɨ/ and /ɰ/, it is acceptable to pronounce it "AH-hi"/ɑ.hi/.
 
 ## Structure of Hangul
 
-Also known as "Korean alphabet", Hangul is truly an alphabetic system, in which each symbol represents separate phoneme, or sound.
+Hangul is an alphabet based language where each character corresponds to one sound.
 
     아희
 
-Every Hangul letter has a structure, that is, a constant is juxtaposed or surrounded by a vowel. You can recognize vowel symbols easily, as they are bar-shaped, often with an attached little rod or two. All of Hangul vowel symbols are following:
+Every Hangul letter is made up of several parts: an initial consonant, a vowel, and an optional final consonant.
 
-    ㅏㅓㅗㅜㅡㅣ
-    ㅑㅕㅛㅠㅢ
+The initial consonants are:
 
-    ㅘㅚ　ㅐㅙ
-    ㅝㅟ　ㅔㅞ
+    ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ
 
-Aheui recognizes last eight complex vowels no more than ornamental symbols; you just can ignore them.
+The vowels are:
+
+    ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ
+
+And the final consonants are:
+
+    ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ
+
+There are three consonants that cannot appear in the final position:
+
+    ㄸㅃㅉ
+
+Some example characters are 한, 가, 응.
+
+In Aheui, the following vowels have no use (although they can still be included in valid programs):
+
+    ㅐㅒㅖㅘㅙㅚㅝㅞㅟ
 
 Lecturing on which-symbol-stands-for-which-sound is too far from the purpose of this document. However, it is notable that similar-looking symbols represent similar sound, as all consonants can be classified into five groups:
 
@@ -39,30 +53,37 @@ Lecturing on which-symbol-stands-for-which-sound is too far from the purpose of 
     ㅅㅈㅊ
     ㅇㅎ
 
-These consonants can also be placed under each letter, as well as on the top of the character surrounded by a vowel. The consonant on the top is called the "initial" consonant while on the bottom is the "final" consonant.
+Initial consonants in Aheui correspond to an instruction, while final consonants (or a lack thereof) act as a sort of parameter for an instruction.
 
-    안흼
+The vowels can also be classified into groups by their intended effect:
 
-In Aheui, functions of consonants and vowels are different each other.
+    ㅏㅑ
+    ㅓㅕ
+    ㅗㅛ
+    ㅜㅠ
+    ㅡㅣㅢ
+
+We will discuss the usage of each vowel later, but the basic idea is that a vowel influences the movement of the cursor in the direction of the "small bar" that protrudes from the vowel. For example, the vowel ㅏ would move the cursor to the right while ㅜ would move it down. The behavior of the three vowels without such a bar (ㅡㅣㅢ) will be covered below.
 
 ## Aheui specification
 
 WARNING: This spec is incomplete and subject to change.
 
-Typical code of Aheui is a two-dimensional space of Hangul characters, where each character is a command. In there cursor is moving around to execute the character which is under the cursor, similar to the intruction pointer of befunge.
+Aheui is written as a two-dimensional grid of Hangul characters. A cursor is used to track the current character that is being considered. The cursor has both a position and momentum attribute that determines where in the grid it will travel next. The cursor behavior is similar to that of the esoteric language Befunge.
 
-The vowels decide the direction of the cursor. The consonants decide instructions to process. Initial consonants are the types of instructions and final consonants are the operands of the instructions.
+Aheui provides multiple storage structures for use during a program execution. There are 28 total storages, 26 stacks, 1 queue, and 1 extension protocol.
 
-Aheui uses multiple storages. Most of them are stacks, but there also is a queue and a stack-like protocol for extensions.
+The stacks are mapped to each final consonant (including the empty one), except for ㅇ and ㅎ.
+* ㅇ maps to the queue
+* ㅎ maps to the extension protocol
 
 ### Code
 
-* An Aheui code consists of only UTF-8 text.
-* An Aheui code may include any character of UTF-8 though only characters in Unicode hangul syllable area will be interpreted as effective commands.
-  * Unicode hangul syllables area consists of code points in hexadecimal number AC00 - D7A3.
-  * Thus imcomplete characters like ㄱ, ㄷ, ㅑ, ㅓ will be ignored. For this use case, consider to combine them with consonants or vowels without effect.
-  * Any other hangul syllable representation will also be ignored. (like Initial-Peak-Final)
-* As mentioned above, consonants and vowels have different fuctions. While the consonant is the actual instruction, the vowel is to determine the cursor's next position. Precisely, when the cursor meets a character, it is engaged to the following process:
+* Aheui programs must be written in UTF-8.
+* Non-Hangul characters will be treated as comments and ignored during execution.
+  * Unicode Hangul syllables area consists of code points in hexadecimal number AC00 - D7A3.
+  * Incomplete characters like ㄱ, ㅇ, ㅑ, and ㅟ are treated as comments.
+* As mentioned above, consonants and vowels have different functions. While the consonant determines the actual instruction, the vowel is used to determine the cursor's next position and momentum. When the cursor reads a valid Hangul character, the following process is initiated:
 * For every syllable, the consonants would be processed first and a cursor would be moved by the vowel. If the consonants change the direction of the cursor, the direction would be decided by the vowel first and changed just before movement.
   1. The consonants would be processed first. If the consonants change the direction of the cursor, it would be reserved.
   1. The direction of the cursor is set by the vowel.
@@ -106,56 +127,50 @@ Each vowels works like below:
 
 The ㅇ group: final consonants will be ignored.
 
-* ㅇ, as it is shaped, is the null instruction, which does nothing. The cursor will immediately move as the vowel indicates.
+* ㅇ is the null instruction. The cursor will immediately move as the vowel indicates.
 * ㅎ is the terminate instruction. The cursor stops at the character and terminates the execution.
   * If the current storage has at least 1 value, the program returns the value which is expected to be popped by ㅁ(pop) consonant. If the current storage is empty, the program returns 0.
   * Even if the current storage is empty, this instruction terminates the execution. The cursor does not move to the opposite direction.
 
-Hence "아희" itself is the code, which would be a null program.
+Hence "아희" itself is valid Aheui code, although it is a null program.
 
-The ㄷ group: arithmatic. Final consonants will be ignored.
+The ㄷ group:
 
-* ㄷ is the add instruction. The cursor pops two values from the current storage, and pushes the sum of two values.
-* ㄸ is shaped double-ㄷ, hence the multiply instruction. The cursor pops two values from the current storage, and pushes the product of two values.
-* ㄴ is the divide instruction. The cursor pops two values from the current storage, divide latter value by former value(latter/former), and pushes the result.
-* ㅌ is the subtract instruction. The cursor pops two values from the current storage, subtract former value from latter value(latter-former), and pushes the result.
-* ㄹ is the modulo instruction. The cursor pops two values from the current storage, and pushes (latter value) modulo (former value)
-* A pair of popped values are same to expected values of double ㅁ(pop) instructions.
+* ㄷ is the addition instruction. The cursor pops two values from the current storage and pushes their sum.
+* ㄸ is the multiplication instruction. The cursor pops two values from the current storage and pushes their product.
+* ㄴ is the division instruction. The cursor pops two values from the current storage, performs integer division of the latter by the former (latter/former), and pushes the result.
+* ㅌ is the subtraction instruction. The cursor pops two values from the current storage, subtracts the former from the latter value (latter-former), and pushes the result.
+* ㄹ is the modulo instruction. The cursor pops two values from the current storage, calculates the latter modulo the former (latter%former), and pushes the result.
 
-The ㅁ group: storage
+The ㅁ group:
 
-* ㅁ is the pop instruction. The cursor pops a value from the current storage. Final consonanat can be applied by case.
-  * If the storage is a stack, the cursor pops the top value.
-  * If the storage is a queue, the cursor pops the front value.
-  * If the storage is an extension protocol, ask to pop a value from the extension protocol.
-  * With a final consonant ㅇ, the cursor pops a value from the current storage and prints it as an decimal integer.
-  * With a final consonant ㅎ, the cursor pops a value from the current storage and prints the character corresponding the value as the Unicode codepoint.
-  * The other final consonants are ignored and the cursor pops a value.
+* ㅁ is the pop instruction. The cursor pops a value from the current storage. Final consonant can be applied by case.
+  * If the final consonant is ㅇ, the cursor pops a value from the current storage and prints it as an integer.
+  * If the final consonant is ㅎ, the cursor pops a value from the current storage and prints the character corresponding the value in UTF-8.
+  * All other final consonants have no effect.
+
 * ㅂ is the push instruction. The cursor pushes a value to the current storage. The value to push is specified by the final consonant.
-  * If the storage is a stack, the storage adds the value to the top of the stack.
-  * If the storage is a queue, the storage adds the value to the end of the queue.
-  * If the storage is an extension protocol, ask to push the value to the extension protocol.
-  * With a final consonant ㅇ, the storage receives an integer representation of string from the standard input and put the value.
-  * With a final consonant ㅎ, the storage receives a UTF-8 character and put the unicode code point of the character.
-  * With other final consonants, the storage receives a constant by the final consonant. See below for the constants table.
-* ㅃ, double-ㅂ, is the duplicate instruction. If the current storage is a stack, the cursor copies the top value and push it. If the current storage is a queue, the cursor copies the front value and push it. (For extension protocols, send the value which sent just before.)
-* ㅍ is the swap instruction. The cursor swaps two values. If the current storage is a stack, swap the top 2 values. If the current storage is a queue, swap the front 2 values.
+  * If the final consonant is ㅇ, an integer is received from standard input and pushed to the current storage.
+  * If the final consonant is ㅎ, a UTF-8 character is received from standard input and it's corresponding integer value is pushed to the current storage.
+  * For all other final consonants, the integer value corresponding to the number of strokes required to draw the consonant is pushed to the current storage. A table of these values for each consonant is provided below. No final consonant has value 0.
 
+* ㅃ is the duplicate instruction.
+  * If the current storage is a stack or a queue, the top value of the storage is pushed to the storage.
+  * For the extension protocol, there is not defined behavior.
 
-For ㅂ instruction without ㅇ or ㅎ final consonant, the storage receive the number of line segments of the final consonant. See below:
+* ㅍ is the swap instruction.
+  * If the current storage is a stack or a queue, swap the top two values.
+  * For the extension protocol, there is not defined behavior.
+
+The list of values mapped to each final consonant for the ㅂ command (not including ㅇ , ㅎ, or no final consonant) is provided below:
 
 <table>
   <tr>
   <td>ㄱ</td> <td>ㄴ</td> <td>ㄷ</td> <td>ㄹ</td> <td>ㅁ</td> <td>ㅂ</td> <td>ㅅ</td> <td>ㅈ</td> <td>ㅊ</td> <td>ㅋ</td> <td>ㅌ</td> <td>ㅍ</td>
   </tr>
   <tr>
-  <td>2</td> <td>2</td> <td>3</td> <td>5</td> <td>4</td> <td>4</td> <td>2</td> <td>3</td> <td>4</td> <td>3</td> <td>4</td> <td></td>
+  <td>2</td> <td>2</td> <td>3</td> <td>5</td> <td>4</td> <td>4</td> <td>2</td> <td>3</td> <td>4</td> <td>3</td> <td>4</td> <td>4</td>
   </tr>
-</table>
-
-In Korean language, following "consonant clusters" are also valid as placed in the final. They are also used in Aheui usefully for higher number, if you can remember which one is valid:
-
-<table>
   <tr>
   <td>ㄲ</td> <td>ㄳ</td> <td>ㄵ</td> <td>ㄶ</td> <td>ㄺ</td> <td>ㄻ</td> <td>ㄼ</td> <td>ㄽ</td> <td>ㄾ</td> <td>ㄿ</td> <td>ㅀ</td> <td>ㅄ</td> <td>ㅆ</td>
   </tr>
@@ -164,15 +179,25 @@ In Korean language, following "consonant clusters" are also valid as placed in t
   </tr>
 </table>
 
-ㅂ instruction with no final consonant pushes zero. There is no way to push 1 explicitly, but it is possible by simple arithmatic, such as `반반나`(2/2), `밤받타`(4-3).
+Note There is no way to push 1 explicitly, but it is possible by simple arithmetic, such as `반반나`(push 2, push 2, divide) or `밤받타`(push 4, push 3, subtract).
 
-The ㅅ group: miscellaneous
+The ㅅ group:
 
-* ㅅ is select instruction, where the cursor selects the storage. The final consonant specifies which storage is to be selected. (See below.)
-* ㅆ is transfer commmand. The cursor pops a value from the current storage, and pushes it into the storage that the final consonant indicates.
-* ㅈ is shaped like balance scales, and this is the compare instruction. The cursor pops two values from the current storage. If the latter value is grater than or equal to the former value, the cursor pushes 1, otherwise 0.
-* ㅊ has many forks, so it is the decide instruction. The cursor pops a value from the current storage. If the value is non-zero, the cursor moves as is specified by the vowel. If the value is zero, the cursor moves *opposite* from the vowel's direction.
+* ㅅ is the storage selection instruction.
+  * The current storage is changed to the storage mapped to by the final consonant.
 
+* ㅆ is storage transfer instruction. The cursor pops a value from the current storage and pushes it into the storage corresponding to the final consonant.
+
+* ㅈ is the compare instruction. The cursor pops two values from the current storage. If the latter value is grater than or equal to the former value, 1 is pushed to the current storage, otherwise 0 is pushed.
+
+* ㅊ is the fork instruction. The cursor pops a value from the current storage. If the value is non-zero, the cursor moves as is specified by the vowel. If the value is zero, the cursor moves *opposite* from the vowel's direction.
+ * For ㅡㅣㅢ, the direction is unchanged.
+
+###Storage Errors
+
+It may be the case that an instruction that requires some number of elements of the stack to be popped (or swapped, duplicated, etc.) without a sufficient number of elements present in the current storage.
+ * In this case, nothing should be popped from the stack.
+ * The momentum should switch to the reverse of the current vowel. Except in the case of reflector vowels, for which the momentum remains the same.
 
 ### Storages
 
@@ -184,7 +209,7 @@ The ㅅ group: miscellaneous
   * The queue is selectable with a final consonant ㅇ.
   * The extension protocol is selectable with a final consonant ㅎ.
 * The storage names are used for ㅅ(select) or ㅆ(transfer) instructions.
-* The default storage which is selected at the very beginning of the execusion is the (none) stack.
+* The default storage which is selected at the very beginning of the execution is the stack corresponding to no final consonant.
   * Commands like "사" is useful to reselect the default stack.
 * In any of the instructions involving a pop or two, including duplication, if a storage has less value than the instruction requires, the cursor doesn't execute the instruction but moves according to the opposite way of the vowel only.
 * It is recommended to support at least 32-bit signed integer for storages.
@@ -211,4 +236,3 @@ I would like to thank Seong-hoon "Tokigun" Kang who helped me a lot working with
 
 * https://github.com/aheui/jsaheui - interpreter written in JavaScript
 * https://github.com/aheui/ - more interpreters written in various languages
-
