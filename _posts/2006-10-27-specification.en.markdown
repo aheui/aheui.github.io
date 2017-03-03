@@ -39,13 +39,13 @@ There are three consonants that cannot appear in the final position:
 
     ㄸㅃㅉ
 
-Some example characters are 한, 가, 응.
+Some example characters are 한, 가, and 응.
 
 In Aheui, the following vowels have no use (although they can still be included in valid programs):
 
     ㅐㅒㅖㅘㅙㅚㅝㅞㅟ
 
-Lecturing on which-symbol-stands-for-which-sound is too far from the purpose of this document. However, it is notable that similar-looking symbols represent similar sound, as all consonants can be classified into five groups:
+Lecturing on which symbol stands for which sound is outside of the scope of this document, however, it should be noted that similar looking symbols represent similar sounds. We can classify the similar sounding (initial) consonants into the following five groups.
 
     ㄱㅋ
     ㄴㄷㅌㄹ
@@ -53,9 +53,9 @@ Lecturing on which-symbol-stands-for-which-sound is too far from the purpose of 
     ㅅㅈㅊ
     ㅇㅎ
 
-Initial consonants in Aheui correspond to an instruction, while final consonants (or a lack thereof) act as a sort of parameter for an instruction.
+Initial consonants in Aheui correspond to an instruction, while final consonants (or a lack thereof) act as a sort of parameter for the instruction.
 
-The vowels can also be classified into groups by their intended effect:
+The vowels can also be classified into groups based on similar shape/sound:
 
     ㅏㅑ
     ㅓㅕ
@@ -63,7 +63,7 @@ The vowels can also be classified into groups by their intended effect:
     ㅜㅠ
     ㅡㅣㅢ
 
-We will discuss the usage of each vowel later, but the basic idea is that a vowel influences the movement of the cursor in the direction of the "small bar" that protrudes from the vowel. For example, the vowel ㅏ would move the cursor to the right while ㅜ would move it down. The behavior of the three vowels without such a bar (ㅡㅣㅢ) will be covered below.
+We will discuss the usage of each vowel later, but the basic idea is that a vowel influences the movement of the cursor in the direction of the "small bar(s)" that protrudes from the vowel. For example, the vowel ㅏ would move the cursor to the right while ㅜ would move it down. The behavior of the three vowels without such a bar (ㅡㅣㅢ) will be covered below.
 
 ## Aheui specification
 
