@@ -161,22 +161,23 @@ The ㅅ group:
 
  ### Vowels: Momentum
  * Aheui code is considered a 2-dimensional grid that wraps around.
- * The momentum of the  cursor is affected by the vowel of a syllable and possibly by the initial consonant.
+ * The momentum of the cursor is affected by the vowel of a syllable and possibly by the initial consonant.
  * The cursor initially has momentum (1, 0), meaning it is moving down in the grid. It's initial position is [0, 0], which is the top left of the grid.
    * The actual specification is that we start at an imaginary cell one space "above" the top left that is populated with a 우 character.
- * If the cursor arrives to any boundary of a code, it wraps around to the other side of the grid but maintains the same momentum.
+ * If the cursor arrives at a boundary of the grid, it wraps around to the other side of the grid but maintains the same momentum.
+   * Note that the grid does not have to be a perfect rectangle of valid characters and that comments and invalid characters count as cells in the grid.
 
  The vowels function in the following manner:
  * ㅏ, ㅓ, ㅗ, and ㅜ change the momentum to be (0,1), (0,-1), (-1,0), or (1,0), respectively.
- * ㅑ, ㅕ, ㅛ, and ㅠ change the momentum to be (0,2), (0,2), (-2,0), or (2,0), respectively.
+ * ㅑ, ㅕ, ㅛ, and ㅠ change the momentum to be (0,2), (0,-2), (-2,0), or (2,0), respectively.
  * ㅡ, ㅣ, and  ㅢ are "reflectors".
    * ㅡ reflects only vertical momentum.
    * ㅣ reflects only horizontal momentum.
    * ㅢ reflects both vertical and horizontal momentum.
-     * Note that it is not possible to have both vertical and horizontal momentum simultaneously be non-zero, so while ㅢ can reflect both, it will only reflect either horizontally or vertically at any given time, depending on the current momentum.
+     * Note that it is not possible to have both vertical and horizontal momentum simultaneously be non-zero. So while ㅢ can reflect both, it will only reflect either horizontally or vertically at any given time, depending on the current momentum.
  * The vowels ㅐ, ㅔ, ㅒ, ㅖ, ㅘ, ㅙ, ㅚ, ㅝ, ㅞ, and ㅟ leave the momentum unchanged.
 
-As an example, consider the case that we have current momentum (1,0), meaning we are going down through the grid. Hitting a character with vowel `ㅣ` will leave the momentum unchanged. However, if we encounter a ㅡ or ㅢ vowel, our momentum is changed to (-1,0), assuming that the momentum is not altered due to the initial consonant.
+As an example, consider the case in which we have current momentum (1,0), meaning we are going down through the grid. Hitting a character with vowel `ㅣ` will leave the momentum unchanged. However, if we encounter a ㅡ or ㅢ vowel, our momentum is changed to (-1,0), assuming that the momentum is not altered due to the initial consonant.
 
 
 ### Storage Structures
