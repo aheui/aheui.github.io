@@ -48,7 +48,7 @@ In Aheui, the following vowels have no use (although they can still be included 
 
     ㅐ,ㅒ,ㅖ,ㅘ,ㅙ,ㅚ,ㅝ,ㅞ,ㅟ
 
-Lecturing on which symbol stands for which sound is outside of the scope of this document, however, it should be noted that similar looking symbols represent similar sounds. We can classify the similar sounding (initial) consonants into the following five groups:
+Lecturing on which symbol stands for which sound is outside of the scope of this document. However, it should be noted that similar looking symbols represent similar sounds. We can classify the similar sounding (initial) consonants into the following five groups:
 
     ㄱ,ㄲ,ㅋ
     ㄷ,ㄸ,ㅌ,ㄴ,ㄹ
@@ -70,7 +70,7 @@ These groups may come in handy as a mnemonic since similar sounding consonants o
 
 ###### WARNING: The reference specification is incomplete and subject to change.
 
-Aheui is written as a two-dimensional grid of Hangul characters. A cursor is used to track the current character that is being considered. The cursor has both a position and momentum that is used to determine where in the grid it will travel next. The cursor behavior is similar to that of the esoteric language Befunge.
+Aheui programs are written as a two-dimensional grid of Hangul characters. A cursor is used to track the current character that is being considered. The cursor has both a position and momentum that is used to determine where in the grid it will travel next. The cursor behavior is similar to that of the esoteric language Befunge.
 
 
 ### Basics
@@ -105,7 +105,7 @@ The ㄷ group:
 * ㄴ is the division instruction. The cursor pops two values from the current storage, performs integer division of the second popped element by the first popped element (second//first), and pushes the result.
 * ㅌ is the subtraction instruction. The cursor pops two values from the current storage, subtracts the first popped element from the second popped element (second-first), and pushes the result.
 * ㄹ is the modulo instruction. The cursor pops two values from the current storage, calculates the second popped element modulo the first popped element (second%first), and pushes the result.
-* In the case that there are an insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
+* In the case that there are is insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
 * All instructions in this group ignore the final consonant.
 * Note that we always pop and push from the storage, not pop and replace. So if the storage is the queue, we could pop from the front and push to the back.
 
@@ -126,7 +126,7 @@ The ㅁ group:
   * If the current storage is a stack or a queue, swap the top two values.
   * For the extension protocol, there is no defined behavior.
 * The ㅃ and ㅍ commands ignore the final consonant.
-* As before, in the case that there are an insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
+* As before, in the case that there is an insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
 
 The integer value of each final consonant (excluding ㅇ,ㅎ, and no final consonant) is given by the following table:
 
@@ -156,24 +156,19 @@ The ㅅ group:
   * Two values are popped from the current storage. If the latter value is grater than or equal to the former value, a 1 is pushed to the current storage, otherwise a 0 is pushed.
 * ㅊ is the fork instruction.
   * A value is popped from the current storage. If the value is non-zero, the cursor moves as is specified by the vowel. If the value is zero, the current momentum is reversed before the vowel is consulted.
-* Again, in the case that there are an insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
+* Again, in the case that there is an insufficient number of elements in the current storage, no action is performed on the storage and the momentum is reversed before consulting the vowel and updating the position.
 
 
  ### Vowels: Momentum
  * Aheui code is considered a 2-dimensional grid that wraps around.
- * The momen of the  cursor is affected by the vowel of a syllable and possibly by the initial consonant.
- * An Aheui cursor initially has momentum (1, 0), meaning it is moving down in the grid. It's initial position is [0, 0], which is the top left of the grid.
+ * The momentum of the  cursor is affected by the vowel of a syllable and possibly by the initial consonant.
+ * The cursor initially has momentum (1, 0), meaning it is moving down in the grid. It's initial position is [0, 0], which is the top left of the grid.
    * The actual specification is that we start at an imaginary cell one space "above" the top left that is populated with a 우 character.
- * If an Aheui cursor arrives to any boundary of a code, it wraps around to the other side of the grid but maintains the same momentum.
-   * The opposite side means the most far character of the opposite of current direction of the cursor. The most far character can be any character which is not a newline character.
- * If the current storage does not have enough values for consonants, a cursor does not process the consonants but change the direction of the cursor.
-   * Except for ㅎ(exit), any instructions with pop including ㅃ(duplicate) and ㅍ(swap) follows this behavior.
+ * If the cursor arrives to any boundary of a code, it wraps around to the other side of the grid but maintains the same momentum.
 
- Each vowels works like below:
-
- * Little branch(es) attached to the bar indicates the direction of the cursor.
- * ㅏ, ㅓ, ㅗ, and ㅜ moves cursor by one character right, left, up, or down, respectively.
- * ㅑ, ㅕ, ㅛ, and ㅠ moves cursor by two characters right, left, up, or down, respectively.
+ The vowels function in the following manner:
+ * ㅏ, ㅓ, ㅗ, and ㅜ change the momentum to be (0,1), (0,-1), (-1,0), or (1,0), respectively.
+ * ㅑ, ㅕ, ㅛ, and ㅠ change the momentum to be (0,2), (0,2), (-2,0), or (2,0), respectively.
  * ㅡ, ㅣ, and  ㅢ are "reflectors".
    * ㅡ reflects only vertical momentum.
    * ㅣ reflects only horizontal momentum.
@@ -181,7 +176,7 @@ The ㅅ group:
      * Note that it is not possible to have both vertical and horizontal momentum simultaneously be non-zero, so while ㅢ can reflect both, it will only reflect either horizontally or vertically at any given time, depending on the current momentum.
  * The vowels ㅐ, ㅔ, ㅒ, ㅖ, ㅘ, ㅙ, ㅚ, ㅝ, ㅞ, and ㅟ leave the momentum unchanged.
 
-As an example, consider the case that we have current momentum (1,0), meaning we are going down through the grid. Hitting a character with vowel 'ㅣ' will leave the momentum unchanged. However, if we encounter a ㅡ or ㅢ vowel, our momentum is changed to (-1,0), assuming that the momentum is not altered due to the initial consonant.
+As an example, consider the case that we have current momentum (1,0), meaning we are going down through the grid. Hitting a character with vowel `ㅣ` will leave the momentum unchanged. However, if we encounter a ㅡ or ㅢ vowel, our momentum is changed to (-1,0), assuming that the momentum is not altered due to the initial consonant.
 
 
 ### Storage Structures
@@ -191,8 +186,7 @@ As an example, consider the case that we have current momentum (1,0), meaning we
   * The queue is mapped to ㅇ.
   * The extension protocol is mapped to ㅎ.
 * The storage names are used as parameters  for the ㅅ (select) or ㅆ (transfer) instructions.
-* The the initial storage is the stack corresponding to the empty final consonant
-* It is recommended to support at least 32-bit signed integer for storages.
+* The initial storage is the stack corresponding to the empty final consonant
 
 
 ## Example
