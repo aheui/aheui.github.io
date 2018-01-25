@@ -3,10 +3,10 @@
     <h1 id="summary"> 개요 </h1>
     <app-line> </app-line>
     <p>
-      <strong> 아희</strong>는 한글로 된 <a href="http://ko.wikipedia.org/wiki/%EB%82%9C%ED%95%B4%ED%95%9C_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4"> 난해한 프로그래밍 언어</a>입니다.
+      <strong> 아희</strong>는 한글로 된 <a class="link" href="http://ko.wikipedia.org/wiki/%EB%82%9C%ED%95%B4%ED%95%9C_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%EC%96%B8%EC%96%B4"> 난해한 프로그래밍 언어</a>입니다.
       주의! 아래의 스펙은 미완성이며 뒷날에 바뀔 수 있습니다. <br />
 
-      인터프리터가 아희를 실행하는 방법은 <a href="http://esolangs.org/wiki/Befunge"> befunge</a>와 비슷합니다.
+      인터프리터가 아희를 실행하는 방법은 <a class="link" href="http://esolangs.org/wiki/Befunge"> befunge</a>와 비슷합니다.
       즉, 코드 공간 안에 커서가 있어서 커서가 위치한 곳에 적혀 있는 명령을 수행하고, 또 그 명령에 따라 커서가 움직이는 것입니다.
       하지만, 그 코드가 ASCII가 아니라 한글이라는 점이 다릅니다.
 

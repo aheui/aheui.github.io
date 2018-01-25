@@ -82,10 +82,12 @@ a.subtitle {
 }
 
 #sidebar {
+  background-color: #eaeaea;
   position: fixed;
   height: 100%;
   padding: 40px 40px;
   flex: 0 0 260px;
+  overflow-y: scroll;
 }
 
 </style>

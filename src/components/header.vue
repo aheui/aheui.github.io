@@ -28,6 +28,7 @@ export default {
   position: fixed;
   top: 0;
   box-shadow: 0 1px 2px 0px rgba(1, 1, 1, 0.2);
+  z-index: 10;
 }
 @media screen and (min-width:600px) {
   #logo {
@@ -46,7 +47,7 @@ export default {
     list-style-type: none;
   }
   li {
-    margin: 0 0.6em;
+    margin: 0 1em;
     float: left;
   }
 }

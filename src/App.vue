@@ -39,10 +39,14 @@ a {
   text-decoration: none;
   color:#2c3e50;
 }
+a.link {
+  color: rgb(60, 60, 235);
+  text-decoration: rgb(60, 60, 235);
+}
 
 .rounded {
-  border: solid 2px rgb(60, 60, 235);
-  color: rgb(60, 60, 235);
+  border: solid 2px rgba(1, 1, 1, 0.6);
+  color: rgba(1, 1, 1, 0.9);
   border-radius: 40px;
   font-size: 1.05em;
   font-weight: 600;

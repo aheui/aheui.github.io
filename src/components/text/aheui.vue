@@ -54,19 +54,19 @@
     <app-line> </app-line>
     <ul>
       <li>
-        <a href="https://github.com/aheui"> 깃헙 </a>
+        <a class="link" href="https://github.com/aheui"> 깃헙 </a>
         - 아희 깃헙 그룹입니다.
       </li>
       <li>
-        <a href="http://aheui.github.io/"> 표준 </a>
+        <a class="link" href="http://aheui.github.io/"> 표준 </a>
         - 아희의 표준을 적어 놓은 문서입니다.
       </li>
       <li>
-        <a href="https://github.com/aheui/snippets"> 코드 </a>
+        <a class="link" href="https://github.com/aheui/snippets"> 코드 </a>
         - 아희로 적은 코드입니다.
       </li>
       <li>
-        <a href="/aheuicon"> 국제아희개발자대회 </a>
+        <a class="link" href="/aheuicon"> 국제아희개발자대회 </a>
       </li>
     </ul>
     <app-footer> </app-footer>
@@ -87,6 +87,9 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: blue;
+}
 ul {
   padding-left: 2em;
 }
