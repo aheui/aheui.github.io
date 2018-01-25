@@ -64,14 +64,17 @@
         <a href="https://github.com/aheui/snippets"> 코드 </a>
         - 아희로 적은 코드입니다.
       </li>
+      <li>
+        <a href="/aheuicon"> 국제아희개발자대회 </a>
+      </li>
     </ul>
     <app-line> </app-line>
-    <span> 실수를 찾았거나 문서에 기여하고싶으신가요? </span>
+    <span> 오타를 찾았나요? 문서에 기여하고싶으신가요? </span>
   </div>
 </template>
 
 <script>
-import line from './line'
+import line from '../line'
 
 export default {
   name: 'appContent',

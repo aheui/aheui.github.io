@@ -25,19 +25,19 @@
         <a class="title" href="/guide/standard"> 표준 </a>
         <ul>
           <li>
-            <a class="subtitle" href="/guide/standard#name2"> 개요 </a>
+            <a class="subtitle" href="/guide/standard#summary"> 개요 </a>
           </li>
           <li>
-            <a class="subtitle" href="/guide/standard#name2"> 코드 </a>
+            <a class="subtitle" href="/guide/standard#code"> 코드 </a>
           </li>
           <li>
-            <a class="subtitle" href="/guide/standard#name2"> 홀소리 </a>
+            <a class="subtitle" href="/guide/standard#holsound"> 홀소리 </a>
           </li>
           <li>
-            <a class="subtitle" href="/guide/standard#name2"> 닿소리 </a>
+            <a class="subtitle" href="/guide/standard#datsound"> 닿소리 </a>
           </li>
           <li>
-            <a class="subtitle" href="/guide/standard#name2"> 저장공간 </a>
+            <a class="subtitle" href="/guide/standard#storage"> 저장공간 </a>
           </li>
         </ul>
       </li>

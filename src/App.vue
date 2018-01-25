@@ -23,6 +23,7 @@ export default {
 * {
   margin: 0px;
   padding: 0px;
+  line-height: 1.6em;
 }
 .flex {
   display: flex;
