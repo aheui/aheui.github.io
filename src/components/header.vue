@@ -27,15 +27,16 @@ export default {
   width: 100%;
   position: fixed;
   top: 0;
+  box-shadow: 0 1px 2px 0px rgba(1, 1, 1, 0.2);
 }
 @media screen and (min-width:600px) {
   #logo {
-    padding: 10px 60px;
-    width: 32px;
+    width: 40px;
   }
   nav {
     display: flex;
     justify-content: space-between;
+    padding: 10px 60px;
     height: 40px;
     width: 100%;
     background-color: rgba(255,255,255,0.4);

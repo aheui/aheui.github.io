@@ -2,9 +2,7 @@
   <div id="app">
     <app-header></app-header>
     <app-mobile-header></app-mobile-header>
-    <v-app id="inspire">
-      <router-view/>
-    </v-app>
+    <router-view/>
   </div>
 </template>
 
@@ -42,11 +40,32 @@ a {
 }
 
 .rounded {
-  border: solid 2px blue;
+  border: solid 2px rgb(60, 60, 235);
+  color: rgb(60, 60, 235);
   border-radius: 40px;
   font-size: 1.05em;
   font-weight: 600;
   padding: 0.75em 2em;
+}
+
+div.content {
+  max-width: 650px;
+  margin: 0px auto;
+  padding-left: 360px;
+  padding-right: 60px;
+  margin-bottom: 40px;
+}
+
+code {
+  display: block;
+  margin: 12px 0px;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+code > p {
+  word-wrap: break-word;
+  white-space: pre;
 }
 
 </style>
