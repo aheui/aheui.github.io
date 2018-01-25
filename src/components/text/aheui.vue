@@ -20,9 +20,10 @@
       <code>
         <p>
           #include &lt;stdio.h&gt;
-          int main(){
-              printf("안녕하세요?\n");
-              return 0;
+
+          int main () {
+              &emsp;printf ("안녕하세요?\n");
+              &emsp;return 0;
           }
         </p>
       </code>
@@ -68,18 +69,19 @@
         <a href="/aheuicon"> 국제아희개발자대회 </a>
       </li>
     </ul>
-    <app-line> </app-line>
-    <span> 오타를 찾았나요? 문서에 기여하고싶으신가요? </span>
+    <app-footer> </app-footer>
   </div>
 </template>
 
 <script>
 import line from '../line'
+import footer from '../footer'
 
 export default {
   name: 'appContent',
   components: {
-    'app-line': line
+    'app-line': line,
+    'app-footer': footer,
   }
 }
 </script>

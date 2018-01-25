@@ -370,20 +370,19 @@
         저장공간은 최소한 32비트의 부호 있는 정수를 지원할 것을 권고합니다.
       </li>
     </ul>
-
-    <app-line> </app-line>
-    <span> 오타를 찾았나요? 문서에 기여하고싶으신가요? </span>
-    <div> 마지막 수정: 2016-01-31 </div>
+    <app-footer> </app-footer>
   </div>
 </template>
 
 <script>
 import line from '../line'
+import footer from '../footer'
 
 export default {
   name: 'appContent',
   components: {
-    'app-line': line
+    'app-line': line,
+    'app-footer': footer,
   }
 }
 </script>

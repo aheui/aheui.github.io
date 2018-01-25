@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div>
     <app-sidebar> </app-sidebar>
     <router-view> </router-view>
   </div>

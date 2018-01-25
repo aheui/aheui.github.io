@@ -17,7 +17,7 @@
             <a class="subtitle" href="/guide#name1"> 커뮤니티 </a>
           </li>
           <li>
-            <a class="subtitle" href="/aheuicon"> 국제아희개발자대회 </a>
+            <a class="subtitle" href="/aheuicon" target="_blank"> 국제아희개발자대회 </a>
           </li>
         </ul>
       </li>
