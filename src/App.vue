@@ -9,8 +9,10 @@
 <script>
 import appHeader from './components/header'
 import mobileHeader from './components/mobileHeader'
+import store from './vuex/store'
 
 export default {
+  store,
   name: 'App',
   components: {
     'app-header': appHeader,

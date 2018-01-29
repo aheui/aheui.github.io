@@ -47,11 +47,6 @@
 <script>
 export default {
   name: 'index',
-  data () {
-    return {
-      msg: '한글로 쓰는\n난해한 프로그래밍 언어'
-    }
-  }
 }
 </script>
 

@@ -1,24 +1,38 @@
 <template>
-  <div id="header">
-    <nav>
-      <a href="/">
-        <img id="logo" src="../assets/logo.svg" alt="로고">
-      </a>
-      <ul>
-        <li>
-          <a href="/guide"> 배우기 </a>
-        </li>
-        <li>
-          <a href="/guide"> 다른언어 </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav id="header">
+    <a href="/">
+      <img id="logo" src="../assets/logo.svg" alt="로고">
+    </a>
+    <ul>
+      <li>
+        <a href="/guide"> 배우기 </a>
+      </li>
+      <li>
+        <select
+          @change="languageHandler"
+        >
+          <option selected value="KOR"> KOR </option>
+          <option value="ENG"> ENG </option>
+        </select>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
 export default {
-  name: 'appHeader'
+  name: 'appHeader',
+  methods: {
+    languageHandler (e) {
+      const lang = e.target.value
+      this.$store.dispatch('setLanguage', { lang })
+    }
+  },
+  computed: {
+    lang () {
+      return this.$store.getters.currentLanguage
+    }
+  }
 }
 </script>
 

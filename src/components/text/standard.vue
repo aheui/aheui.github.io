@@ -399,6 +399,9 @@ th, td {
 td {
   text-align: center;
 }
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 ol {
   padding-left: 2em;
 }
