@@ -13,6 +13,7 @@
 
    introduction
    specs
+   specs.en
 
 
 * `코드 <https://github.com/aheui/snippets>`_
