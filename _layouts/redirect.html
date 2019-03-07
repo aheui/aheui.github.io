@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect_url }}">
+  <link rel="canonical" href="{{ page.redirect_url }}">
+  <title></title>
+</head>
+<body>
+  {{ content }}
+  <p><a href="{{ page.redirect_url }}">Click here</a> if you're not redirected.</p>
+  <script>window.location = '{{ page.redirect_url }}';</script>
+</body>
+</html>
