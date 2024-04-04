@@ -122,6 +122,7 @@ The ㅁ group:
 * ㅁ is the pop instruction. The cursor pops a value from the current storage. The final consonants have the following effects:
     * If the final consonant is ㅇ, the cursor pops a value from the current storage and prints it as an integer.
     * If the final consonant is ㅎ, the cursor pops a value from the current storage and prints the character corresponding the value in UTF-8.
+        * Regardless the top value is a valid unicode codepoint or not, it must be popped out.
     * All other final consonants (including the empty case) have no effect.
 * ㅂ is the push instruction. The cursor pushes a value to the current storage. The value to push is specified by the final consonant:
     * If the final consonant is ㅇ, an integer is received from standard input and pushed to the current storage.
