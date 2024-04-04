@@ -103,6 +103,7 @@ The ㅇ group:
 * ㅇ is the null instruction. The momentum is immediately updated by the vowel and the cursor moves in that direction without performing any other action.
 * ㅎ is the terminate instruction. The cursor stops at the character and the program terminates.
     * If the current storage is non-empty, the program pops from the storage and returns the result. If the current storage is empty, the program returns 0.
+    * Even if the popped value is out of range of program return of the running platform, the program always terminates.
 
 Hence "아희" itself is a valid Aheui program, although it is basically a null program.
 
